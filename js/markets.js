@@ -45,15 +45,15 @@ class Bitstamp extends Market {
 
     constructor() {
         super();
-        this.apiAdrress = "https://www.bitstamp.net/api/ticker";
-        this.priceInfo = "Based on Bistamp daily performance";
+        this.apiAdrress = "https://www.bitstamp.net/api/v2/ticker/ethusd/";
+        this.priceInfo = "Based on Bitstamp daily performance";
         this.id = 0;
     }
 
     runWebsocketTicker(updateTicker) {
 
         var pusher = new Pusher('de504dc5763aeef9ff52'),
-            tradesChannel = pusher.subscribe('live_trades');
+            tradesChannel = pusher.subscribe('live_trades_ethusd');
 
         var _this = this;
         tradesChannel.bind('trade', function(data) {
@@ -83,7 +83,7 @@ class Bitfinex extends Market {
 
     constructor() {
         super();
-        this.apiAdrress = "https://api.bitfinex.com/v2/candles/trade:1D:tBTCUSD/hist?limit=1";
+        this.apiAdrress = "https://api.bitfinex.com/v2/candles/trade:1D:tETHUSD/hist?limit=1";
         this.priceInfo = "Based on Bitfinex 24h timeframe";
         this.id = 1;
     }
@@ -106,8 +106,8 @@ class Bitfinex extends Market {
         let msg = JSON.stringify({
             event: 'subscribe',
             channel: 'ticker',
-            symbol: 'tBTCUSD'
-        })
+            symbol: 'tETHUSD'
+        });
 
         w.onopen = function() {
             w.send(msg);
