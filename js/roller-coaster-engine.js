@@ -101,15 +101,15 @@ $(document).ready(function() {
         var rollerCoasterStatus = "";
         var changeAbs = Math.abs((currentMoon / oldEarth) - 1).toFixed(3);
         var changeTreshold = 0.008;
-        
+
         if(close>=100000){
             $('body').css('background-image', 'url(images/moon.gif');
         }else{
             $('body').css('background-image', 'url(images/what-if-its-a-space-rollercoaster.jpg');
         }
-        
+
         if (changeAbs >= changeTreshold) {
-            $("#roller-coaster-guy").attr("src", "images/roller-coaster-guy.gif");
+            $("#roller-coaster-guy").attr("src", "images/munztiger.png");
             rotateTheGuy(90 - (angle)); //  +90 degrees 'cause de upwards gif
 
             if (angle >= 0) {
@@ -119,7 +119,7 @@ $(document).ready(function() {
             }
         } else {
             rollerCoasterStatus = meh[randomNumber];
-            $("#roller-coaster-guy").attr("src", "images/no-fun-roller-coaster-guy.gif");
+            $("#roller-coaster-guy").attr("src", "images/munztiger.png");
             rotateTheGuy(-angle);
         }
 
